@@ -5,10 +5,15 @@
   <h1>Cookbook</h1>
 <% end %>
 
-<% @recipes.each do |recipe| %>
-  <ul>
-    <li><%= recipe.name %></li>
-    <li><%= recipe.directions %></li>
-    <li><%= recipe.ingredients %></li>
-  </ul>
+
+<% if user_signed_in? %>
+  <% current_user.recipes.each do |recipe| %>
+    <ul>
+      <li><%= recipe.name %></li>
+      <li><%= recipe.directions %></li>
+      <li><%= recipe.ingredients %></li>
+    </ul>
+  <% end %>
+<% else %>
+  <h2>NOT SIGNED IN</h2>
 <% end %>
