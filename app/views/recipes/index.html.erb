@@ -1,4 +1,9 @@
-<h1>Cookbook</h1>
+
+<% if user_signed_in? %>
+  <h1><%= current_user.name %>'s Cookbook</h1>
+<% else %>
+  <h1>Cookbook</h1>
+<% end %>
 
 <% @recipes.each do |recipe| %>
   <ul>
