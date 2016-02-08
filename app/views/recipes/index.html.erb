@@ -1,0 +1,9 @@
+<h1>Cookbook</h1>
+
+<% @recipes.each do |recipe| %>
+  <ul>
+    <li><%= recipe.name %></li>
+    <li><%= recipe.directions %></li>
+    <li><%= recipe.ingredients %></li>
+  </ul>
+<% end %>
