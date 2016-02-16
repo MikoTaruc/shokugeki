@@ -1,19 +1,24 @@
+<div id="content"></div>
 
-<% if user_signed_in? %>
-  <h1><%= current_user.name %>'s Cookbook</h1>
-<% else %>
-  <h1>Cookbook</h1>
-<% end %>
+<script type="text/template" id="angry_cats-template">
+  <button type="button" id="lol">TEST</button>
+</script>
+
+<script type="text/template" id="angry_cat-template">
+  <div>{{- name }}</div>
+</script>
+
+<script type="text/template" id="recipe-list-template">
+<div class="cookbook-label">
+  <%= current_user.name %> Cookbook
+</div>
+</script>
+
+<script type="text/template" id="recipe-item-template">
+  <div class="recipe">
+    <li>{{- recipe.name }}</li>
+  </div>
+</script>
 
 
-<% if user_signed_in? %>
-  <% current_user.recipes.each do |recipe| %>
-    <ul>
-      <li><%= recipe.name %></li>
-      <li><%= recipe.directions %></li>
-      <li><%= recipe.ingredients %></li>
-    </ul>
-  <% end %>
-<% else %>
-  <h2>NOT SIGNED IN</h2>
-<% end %>
+

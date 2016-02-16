@@ -1,0 +1,20 @@
+<div id="content"></div>
+<script type="text/template" id="recipe-list-template">
+<div class="cookbook-label">
+  <%= current_user.name %>s Cookbook
+</div>
+</script>
+
+<script type="text/template" id="recipe-item-template">
+  <div class="recipe">
+    <span>{{- name }}</span>
+    <ul>
+      <li>{{- directions }}</li>
+      <li>{{- ingredients }}</li>
+    </ul>
+  </div>
+</script>
+
+
+
+

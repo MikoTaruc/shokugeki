@@ -3,17 +3,17 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
 
-  # GET /recipes
   # GET /recipes.json
   def index
     @recipes = Recipe.all
     # This is for when backbone happens
-    # respond_with @recipes
+    respond_with @recipes
   end
 
   # GET /recipes/1
   # GET /recipes/1.json
   def show
+    respond_with @recipe
   end
 
   # GET /recipes/new
