@@ -12,11 +12,13 @@ var Recipes = Backbone.Collection.extend({
 });
 
 var RecipeView = Backbone.Marionette.ItemView.extend({
-  template: "#recipe-item-template"
+  template: "#recipe-item-template",
+  className: "row"
 });
 
 var RecipesView = Backbone.Marionette.CompositeView.extend({
   childView: RecipeView,
+  className: "recipe-list",
   template: "#recipe-list-template"
 });
 

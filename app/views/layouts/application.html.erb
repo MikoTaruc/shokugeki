@@ -7,8 +7,8 @@
   <%= csrf_meta_tags %>
 </head>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<p class="notice collapse"><%= notice %></p>
+<p class="alert collapse"><%= alert %></p>
 
 <body>
 <% if !user_signed_in? %>
@@ -17,7 +17,9 @@
 <% else %>
   <%= link_to("Sign Out", destroy_user_session_path, method: :delete) %>
 <% end %>
-<%= yield %>
+<div class="container">
+  <%= yield %>
+</div>
 
 </body>
 </html>

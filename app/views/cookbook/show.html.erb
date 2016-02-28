@@ -1,12 +1,30 @@
 <div id="content"></div>
 <script type="text/template" id="recipe-list-template">
-<div class="cookbook-label">
-  <%= current_user.name %>s Cookbook
+<div class="row">
+  <div class="cookbook-label col-xs-12">
+    <h3><%= current_user.name %>s Cookbook</h3>
+  </div>
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-2"id="search-recipe">
+      <form class="search-form" role="search">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search" name="search-term" id="search-term">
+          <div class="input-group-btn">
+            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-xs-2" id="add-recipe">
+      <button class="btn btn-success">Add Recipe</button>
+    </div>
+  </div>
 </div>
+
 </script>
 
 <script type="text/template" id="recipe-item-template">
-  <div class="recipe">
+  <div class="recipe col-xs-12">
     <span>{{- name }}</span>
     <ul>
       <li>{{- directions }}</li>
@@ -14,7 +32,4 @@
     </ul>
   </div>
 </script>
-
-
-
 
