@@ -1,6 +1,8 @@
-MyApp = new Backbone.Marionette.Application();
+var Shokugeki = {};
 
-MyApp.addRegions({
+Shokugeki.App = new Backbone.Marionette.Application();
+
+Shokugeki.App.addRegions({
   mainRegion: "#content"
 });
 
@@ -19,19 +21,30 @@ var RecipeView = Backbone.Marionette.ItemView.extend({
 var RecipesView = Backbone.Marionette.CompositeView.extend({
   childView: RecipeView,
   className: "recipe-list",
-  template: "#recipe-list-template"
+  template: "#recipe-list-template",
+  ui: {
+    "addButton": "#add-recipe"
+  },
+
+  events: {
+    "click @ui.addButton": "addRecipe"
+  },
+
+  addRecipe: function(){
+    console.log("hello");
+  }
 });
 
-MyApp.addInitializer(function(options){
+Shokugeki.App.addInitializer(function(options){
   var myRecipes = new Recipes();
   myRecipes.fetch();
 
   var MyRecipesView = new RecipesView({
     collection: myRecipes
   });
-  MyApp.mainRegion.show(MyRecipesView);
+  Shokugeki.App.mainRegion.show(MyRecipesView);
 });
 
 $(document).ready(function(){
-  MyApp.start({});
+  Shokugeki.App.start({});
 });
