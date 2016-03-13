@@ -6,7 +6,9 @@ Shokugeki.App.addRegions({
   mainRegion: "#content"
 });
 
-var Recipe = Backbone.Model.extend({});
+var Recipe = Backbone.Model.extend({
+  url: '/recipes.json'
+});
 
 var Recipes = Backbone.Collection.extend({
   model: Recipe,
@@ -31,16 +33,22 @@ var RecipesView = Backbone.Marionette.CompositeView.extend({
   },
 
   addRecipe: function(){
-    console.log("hello");
+    var recipe = new Recipe({
+      directions: "Set fire to your pants",
+      ingredients: "pants and fire",
+      name: "Burnt Pants"
+    });
+    recipe.save();
+    Shokugeki.myRecipes.fetch();
   }
 });
 
 Shokugeki.App.addInitializer(function(options){
-  var myRecipes = new Recipes();
-  myRecipes.fetch();
+  Shokugeki.myRecipes = new Recipes();
+  Shokugeki.myRecipes.fetch();
 
   var MyRecipesView = new RecipesView({
-    collection: myRecipes
+    collection: Shokugeki.myRecipes
   });
   Shokugeki.App.mainRegion.show(MyRecipesView);
 });
