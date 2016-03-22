@@ -3,7 +3,16 @@ var Shokugeki = {};
 Shokugeki.App = new Backbone.Marionette.Application();
 
 Shokugeki.App.addRegions({
-  mainRegion: "#content"
+//   mainRegion: "#content",
+  appRegion: "#mikotest"
+});
+
+var RecipeLayoutView = Marionette.LayoutView.extend({
+  template: "#layout-recipe-template",
+  regions: {
+    mainRegion: "#content",
+    modalRegion: "#modals"
+  }
 });
 
 var Recipe = Backbone.Model.extend({
@@ -25,11 +34,13 @@ var RecipesView = Backbone.Marionette.CompositeView.extend({
   className: "recipe-list",
   template: "#recipe-list-template",
   ui: {
-    "addButton": "#add-recipe"
+    "addButton": "#add-recipe",
+    "riasButton": "#rias-button"
   },
 
   events: {
-    "click @ui.addButton": "addRecipe"
+    "click @ui.addButton": "addRecipe",
+    "click @ui.riasButton": "riasFunction"
   },
 
   addRecipe: function(){
@@ -40,7 +51,15 @@ var RecipesView = Backbone.Marionette.CompositeView.extend({
     });
     recipe.save();
     Shokugeki.myRecipes.fetch();
+  },
+
+  riasFunction: function(){
+    $('.cookbook-label h3').text("MIKO LOVES RIA");
   }
+});
+
+var NewRecipeModal = Backbone.Marionette.ItemView.extend({
+  template: "#recipe-add-modal"
 });
 
 Shokugeki.App.addInitializer(function(options){
@@ -50,7 +69,11 @@ Shokugeki.App.addInitializer(function(options){
   var MyRecipesView = new RecipesView({
     collection: Shokugeki.myRecipes
   });
-  Shokugeki.App.mainRegion.show(MyRecipesView);
+
+  var recipeLayoutView = new RecipeLayoutView();
+  Shokugeki.App.appRegion.show(recipeLayoutView);
+  recipeLayoutView.getRegion('mainRegion').show(MyRecipesView);
+  recipeLayoutView.getRegion('modalRegion').show(new NewRecipeModal());
 });
 
 $(document).ready(function(){
