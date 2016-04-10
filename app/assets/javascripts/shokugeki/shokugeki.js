@@ -3,8 +3,7 @@ var Shokugeki = {};
 Shokugeki.App = new Backbone.Marionette.Application();
 
 Shokugeki.App.addRegions({
-//   mainRegion: "#content",
-  appRegion: "#mikotest"
+  appRegion: "#main"
 });
 
 var RecipeLayoutView = Marionette.LayoutView.extend({
@@ -13,53 +12,6 @@ var RecipeLayoutView = Marionette.LayoutView.extend({
     mainRegion: "#content",
     modalRegion: "#modals"
   }
-});
-
-var Recipe = Backbone.Model.extend({
-  url: '/recipes.json'
-});
-
-var Recipes = Backbone.Collection.extend({
-  model: Recipe,
-  url: '/recipes.json'
-});
-
-var RecipeView = Backbone.Marionette.ItemView.extend({
-  template: "#recipe-item-template",
-  className: "row"
-});
-
-var RecipesView = Backbone.Marionette.CompositeView.extend({
-  childView: RecipeView,
-  className: "recipe-list",
-  template: "#recipe-list-template",
-  ui: {
-    "addButton": "#add-recipe",
-    "riasButton": "#rias-button"
-  },
-
-  events: {
-    "click @ui.addButton": "addRecipe",
-    "click @ui.riasButton": "riasFunction"
-  },
-
-  addRecipe: function(){
-    var recipe = new Recipe({
-      directions: "Set fire to your pants",
-      ingredients: "pants and fire",
-      name: "Burnt Pants"
-    });
-    recipe.save();
-    Shokugeki.myRecipes.fetch();
-  },
-
-  riasFunction: function(){
-    $('.cookbook-label h3').text("MIKO LOVES RIA");
-  }
-});
-
-var NewRecipeModal = Backbone.Marionette.ItemView.extend({
-  template: "#recipe-add-modal"
 });
 
 Shokugeki.App.addInitializer(function(options){
