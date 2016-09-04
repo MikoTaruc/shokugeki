@@ -3,21 +3,15 @@ var RecipesView = Backbone.Marionette.CompositeView.extend({
   className: "recipe-list",
   template: "#recipe-list-template",
   ui: {
-    "addButton": "#add-recipe",
-    "riasButton": "#rias-button"
+    "addButton": "#add-recipe"
   },
 
   events: {
     "click @ui.addButton": "addRecipe",
-    "click @ui.riasButton": "riasFunction"
   },
 
   addRecipe: function(){
     // Display modal
-    $('#mikomodal').modal('show');
+    $('#add-modal').modal('show');
   },
-
-  riasFunction: function(){
-    $('.cookbook-label h3').text("MIKO LOVES RIA");
-  }
 });
