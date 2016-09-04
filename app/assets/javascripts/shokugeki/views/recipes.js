@@ -3,15 +3,20 @@ var RecipesView = Backbone.Marionette.CompositeView.extend({
   className: "recipe-list",
   template: "#recipe-list-template",
   ui: {
-    "addButton": "#add-recipe"
+    "addButton": "#add-recipe",
+    "randomButton": "#random-recipe"
   },
 
   events: {
     "click @ui.addButton": "addRecipe",
+    "click @ui.randomButton": "randomRecipe"
   },
 
   addRecipe: function(){
-    // Display modal
     $('#add-modal').modal('show');
   },
+
+  randomRecipe: function(){
+    Shokugeki.myRecipes.fetch();
+  }
 });

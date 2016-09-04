@@ -1,0 +1,13 @@
+.container {
+  max-width: 550px;
+}
+
+#new_user {
+  #user_email, #user_password {
+    width: 100%;
+  }
+
+  .actions {
+    float: left;
+  }
+}
