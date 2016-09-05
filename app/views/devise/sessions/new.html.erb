@@ -1,6 +1,8 @@
+<%= stylesheet_link_tag 'devise', media: 'all', 'data-turbolinks-track' => true %>
+
 <div>
+  <h2 id="login-title">Shokugeki</h2>
   <div id="login" class="col-xs-6 col-xs-offset-3">
-    <h2>Shokugeki Log in</h2>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
         <%= f.label :email %><br />
