@@ -16,4 +16,4 @@
 //= require_tree ./lib/underscore
 //= require_tree ./lib/backbone
 //= require_tree ./lib/bootstrap
-
+//= require_tree ./lib/isotope

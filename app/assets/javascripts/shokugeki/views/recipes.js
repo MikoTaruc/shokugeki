@@ -10,6 +10,15 @@ var RecipesView = Backbone.Marionette.CompositeView.extend({
     "click @ui.addButton": "addRecipe",
   },
 
+  onRender: function(){
+    this.collection.on('sync', function(){
+      $('.recipe-list').isotope({
+        itemSelector: '.single-recipe',
+        layoutMode: 'fitRows'
+      });
+    });
+  },
+
   addRecipe: function(){
     $('#add-modal').modal('show');
   }
