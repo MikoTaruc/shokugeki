@@ -1,6 +1,6 @@
 var RecipesView = Backbone.Marionette.CompositeView.extend({
   childView: RecipeView,
-  className: "recipe-list",
+  className: "recipe-list container",
   template: "#recipe-list-template",
   ui: {
     "addButton": "#add-recipe"
@@ -10,9 +10,14 @@ var RecipesView = Backbone.Marionette.CompositeView.extend({
     "click @ui.addButton": "addRecipe",
   },
 
+  attachHtml: function(collectionView, childView, index){
+
+    $('#all-recipes').append(childView.el);
+  },
+
   onRender: function(){
     this.collection.on('sync', function(){
-      $('.recipe-list').isotope({
+      $('#all-recipes').isotope({
         itemSelector: '.single-recipe',
         layoutMode: 'fitRows'
       });
