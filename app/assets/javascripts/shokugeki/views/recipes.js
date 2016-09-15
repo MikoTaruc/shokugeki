@@ -19,7 +19,9 @@ var RecipesView = Backbone.Marionette.CompositeView.extend({
     this.collection.on('sync', function(){
       $('#all-recipes').isotope({
         itemSelector: '.single-recipe',
-        layoutMode: 'fitRows'
+        masonry: {
+          gutter: 5
+        }
       });
     });
   },

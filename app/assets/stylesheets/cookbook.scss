@@ -16,5 +16,21 @@ body {
 
   .recipe-list {
     background-color: #fff;
+
+    .recipe {
+      height: 150px;
+      width: 150px;
+      line-height: 150px;
+      border-radius: 3px;
+      background-color: green;
+      color: #fff;
+      text-align: center;
+
+      span {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: normal;
+      }
+    }
   }
 }
