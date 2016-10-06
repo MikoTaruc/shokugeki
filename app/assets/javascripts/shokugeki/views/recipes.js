@@ -20,7 +20,8 @@ var RecipesView = Backbone.Marionette.CompositeView.extend({
       $('#all-recipes').isotope({
         itemSelector: '.single-recipe',
         masonry: {
-          gutter: 5
+          gutter: 5,
+          isFitWidth: true
         }
       });
     });

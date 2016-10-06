@@ -24,3 +24,9 @@ body {
   height: 75px;
   margin-bottom: 30px;
 }
+
+@media (min-width: 1200px) {
+  .container {
+    width: 970px;
+  }
+}
