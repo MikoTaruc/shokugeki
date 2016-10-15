@@ -1,4 +1,4 @@
-<%= stylesheet_link_tag 'cookbook', media: 'all', 'data-turbolinks-track' => true %>
+<%= stylesheet_link_tag 'manifest_cookbook', media: 'all', 'data-turbolinks-track' => true %>
 <%= javascript_include_tag 'manifest_cookbook', 'data-turbolinks-track' => true %>
 
 <div id="main"></div>
@@ -53,7 +53,9 @@
           <h5>Recipe Name</h5>
           <input type="text" id="recipe-name">
           <h5>Ingredients</h5>
-          <textarea rows="3" id="ingredients"></textarea>
+          <div id="add-ingredients-wrapper">
+            <button id="add-ingredient" type="button" class="btn btn-success"><i class="fa fa-plus"></i></button>
+          </div>
           <h5>Directions</h5>
           <textarea rows="5" id="directions"></textarea>
         </div>

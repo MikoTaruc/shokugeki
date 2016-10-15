@@ -70,7 +70,9 @@ class RecipesController < ApplicationController
 
     def update_ingredients
       ingredients = []
-      ingredients << { :name => params[:ingredients] }
+      params[:ingredients].each do |ingredient|
+        ingredients << {:name => ingredient }
+      end
       pp "mikp update ingredients"
       pp ingredients
       @recipe.ingredients.create(ingredients)
