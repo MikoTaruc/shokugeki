@@ -31,6 +31,7 @@ class RecipesController < ApplicationController
     @recipe = current_user.recipes.build(recipe_params)
 
     if @recipe.save
+      update_ingredients
       respond_with @recipe
     else
       render :json => { :errors => @recipe.errors }, :status => 422
@@ -67,8 +68,16 @@ class RecipesController < ApplicationController
       @recipe = Recipe.find(params[:id])
     end
 
+    def update_ingredients
+      ingredients = []
+      ingredients << { :name => params[:ingredients] }
+      pp "mikp update ingredients"
+      pp ingredients
+      @recipe.ingredients.create(ingredients)
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
-      params.require(:recipe).permit(:name, :directions, :ingredients)
+      params.require(:recipe).permit(:name, :directions, "ingredients")
     end
 end
