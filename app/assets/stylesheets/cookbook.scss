@@ -3,8 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body {
-  background-color: #6600cc;
-
   #add-modal {
     .modal-boy {
       input, textarea {
@@ -14,8 +12,13 @@ body {
     }
   }
 
+  #cookbook-top {
+    margin-bottom: 25px;
+  }
+
   .recipe-list {
     background-color: #fff;
+    padding-bottom: 40px;
 
     #all-recipes {
       margin: 0 auto;
