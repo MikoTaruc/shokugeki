@@ -69,12 +69,16 @@ class RecipesController < ApplicationController
     end
 
     def update_ingredients
+      # Handle exception
       ingredients = []
       params[:ingredients].each do |ingredient|
-        ingredients << {:name => ingredient }
+        if !current_user.ingredients.exists?({:name => ingredient})
+          ingredients << {:name => ingredient, :user_id => current_user.id}
+        else
+          @recipe.ingredients << current_user.ingredients.where({:name => ingredient})
+        end
       end
-      pp "mikp update ingredients"
-      pp ingredients
+
       @recipe.ingredients.create(ingredients)
     end
 

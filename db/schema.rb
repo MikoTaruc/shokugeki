@@ -11,11 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161015165246) do
+ActiveRecord::Schema.define(version: 20161016122554) do
 
   create_table "ingredients", force: :cascade do |t|
-    t.string "name", limit: 255
+    t.string  "name",    limit: 255
+    t.integer "user_id", limit: 4
   end
+
+  add_index "ingredients", ["user_id"], name: "fk_rails_3baa1008a1", using: :btree
 
   create_table "ingredients_recipes", id: false, force: :cascade do |t|
     t.integer "ingredient_id", limit: 4
@@ -51,5 +54,6 @@ ActiveRecord::Schema.define(version: 20161015165246) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "ingredients", "users"
   add_foreign_key "recipes", "users"
 end
