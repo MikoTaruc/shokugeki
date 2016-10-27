@@ -3,31 +3,41 @@ var RecipesView = Backbone.Marionette.CompositeView.extend({
   className: "recipe-list container",
   template: "#recipe-list-template",
   ui: {
-    "addButton": "#add-recipe"
+    "addButton": "#add-recipe",
+    "search": ".search-form"
   },
 
   events: {
-    "click @ui.addButton": "addRecipe",
+    "click @ui.addButton": "openModal",
+    "keyup @ui.search": "searchRecipe"
   },
 
-  attachHtml: function(collectionView, childView, index){
+  addItem: function(){
 
-    $('#all-recipes').append(childView.el);
   },
 
-  onRender: function(){
-    this.collection.on('sync', function(){
-      $('#all-recipes').isotope({
-        itemSelector: '.single-recipe',
-        masonry: {
-          gutter: 5,
-          isFitWidth: true
-        }
-      });
+  attachHtml: function(collectionView, childView, index) {
+    $('#all-recipes').isotope('insert', childView.el);
+  },
+
+  onShow: function() {
+    $('#all-recipes').isotope({
+      itemSelector: '.single-recipe',
+      masonry: {
+        gutter: 5,
+        isFitWidth: true
+      }
     });
   },
 
-  addRecipe: function(){
+  onRender: function() {
+  },
+
+  openModal: function() {
     $('#add-modal').modal('show');
+  },
+
+  searchRecipe: function(e) {
+    e.preventDefault();
   }
 });

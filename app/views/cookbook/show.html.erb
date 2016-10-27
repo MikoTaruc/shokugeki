@@ -17,7 +17,7 @@
     </div>
     <div class="row">
       <div class="col-xs-6 col-xs-offset-2"id="search-recipe">
-        <form class="search-form" role="search">
+        <form class="search-form" role="search" action=''>
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Search" name="search-term" id="search-term">
             <div class="input-group-btn">
@@ -54,13 +54,13 @@
           <input type="text" id="recipe-name">
           <h5>Ingredients</h5>
           <div id="add-ingredients-wrapper">
-            <button id="add-ingredient" type="button" class="btn btn-success"><i class="fa fa-plus"></i></button>
           </div>
+          <button id="add-ingredient" type="button" class="btn btn-success"><i class="fa fa-plus"></i></button>
           <h5>Directions</h5>
           <textarea rows="5" id="directions"></textarea>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button id="close" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           <button id="save" type="button" class="btn btn-primary" data-dismiss="modal">Add Recipe</button>
         </div>
       </div>
